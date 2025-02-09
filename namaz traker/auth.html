@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/css/auth.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<div id="signup" class="active">
+    <h1>Signup</h1>
+  <form id="signup-form">
+    <p>User Name</p>
+    <input type="text" name="name" class="inp" placeholder="Name" required />
+    <p>Email Address</p>
+    <input type="email" name="email" class="inp" placeholder="Email" required />
+    <p>Password</p>
+    <input type="password" name="password" class="inp" placeholder="Password" required />
+    <div>
+        <a id="not-member">If you have an account, click here</a>
+        <button type="submit" class="btn">Signup</button>
+    </div>
+  </form>
+</div>
+
+<div id="login">
+    <h1>Login</h1>
+  <form id="login-form">
+    <p>Email Address</p>
+    <input type="email" name="email" class="inp" placeholder="Email" required />
+    <p>Password</p>
+    <input type="password" name="password" class="inp" placeholder="Password" required />
+    <div>
+        <a id="already-member">I am not a member</a>
+        <button type="submit" class="btn">Login</button>
+    </div>
+  </form>
+</div>
+<script src="static/js/auth.js"></script>
+
+</body>
+</html>

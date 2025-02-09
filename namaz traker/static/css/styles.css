@@ -1,0 +1,336 @@
+:root {
+    --islamic-blue: #1e88e5;
+    --islamic-dark-blue: #1565c0;
+}
+
+:root[data-theme="dark"] {
+    --bg-color: #121212;
+    --card-bg: rgba(18, 18, 18, 0.95);
+    --card-border: rgba(30, 136, 229, 0.2);
+    --text-color: #fff;
+}
+
+:root[data-theme="light"] {
+    --bg-color: #f5f5f5;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --card-border: rgba(30, 136, 229, 0.2);
+    --text-color: #333;
+}
+
+[data-theme="light"] .prayer-name,
+[data-theme="light"] .date-display,
+[data-theme="light"] .month-navigation span {
+    color: #333;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: var(--islamic-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+body {
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 1400px;
+    padding: 2rem;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: var(--islamic-blue);
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+header h1::before,
+header h1::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--islamic-blue);
+    transition: width 0.4s ease;
+}
+
+header h1::before {
+    left: 0;
+    top: 0;
+}
+
+header h1::after {
+    right: 0;
+    bottom: 0;
+}
+
+header h1:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 8px rgba(30, 136, 229, 0.3);
+}
+
+header h1:hover::before,
+header h1:hover::after {
+    width: 100%;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.month-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.month-navigation button {
+    background: transparent;
+    border: 1px solid var(--islamic-blue);
+    color: var(--islamic-blue);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.month-navigation button:hover {
+    background: var(--islamic-blue);
+    color: white;
+}
+
+.month-navigation span {
+    font-size: 1.2rem;
+    color: var(--islamic-blue);
+}
+
+.date-display {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.date-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.date-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(30, 136, 229, 0.2);
+}
+
+.date-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--card-border);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.bulk-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.complete-all-btn,
+.cross-all-btn {
+    padding: 0.25rem 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.complete-all-btn {
+    background: var(--islamic-blue);
+    color: white;
+}
+
+.cross-all-btn {
+    background: #ff4444;
+    color: white;
+}
+
+.complete-all-btn:hover,
+.cross-all-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+.date-number {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--islamic-blue);
+}
+
+.prayer-list {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.prayer-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: rgba(30, 136, 229, 0.1);
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.prayer-item:hover {
+    background: rgba(30, 136, 229, 0.15);
+}
+
+.prayer-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+}
+
+.prayer-icon {
+    color: var(--islamic-blue);
+    font-size: 1rem;
+}
+
+/* Checkbox Styles */
+.prayer-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.prayer-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cross-btn {
+    background: none;
+    border: none;
+    color: #ff4444;
+    cursor: pointer;
+    padding: 0.25rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.cross-btn:hover {
+    opacity: 1;
+}
+
+.prayer-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--islamic-blue);
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 0;
+}
+
+.prayer-checkbox:checked {
+    background-color: var(--islamic-blue);
+    border-color: var(--islamic-blue);
+}
+
+.prayer-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .calendar-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .date-box {
+        padding: 1rem;
+    }
+}
+
+.prayer-item.completed {
+    background: rgba(30, 136, 229, 0.2);
+}
+
+.prayer-item.not-offered {
+    background: rgba(255, 68, 68, 0.1);
+    text-decoration: line-through;
+    opacity: 0.7;
+}
